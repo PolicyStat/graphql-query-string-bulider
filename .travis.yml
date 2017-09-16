@@ -4,14 +4,16 @@ script: tox -v -e $TOX_ENV -- --verbose
 sudo: false
 env:
   - TOX_ENV=py27pep8
-  - TOX_ENV=py36pep8
+  - TOX_ENV=py34pep8
+  # - TOX_ENV=py36pep8
   - TOX_ENV=py27-coverage
-  - TOX_ENV=py36-coverage
+  - TOX_ENV=py34-coverage
+  # - TOX_ENV=py36-coverage
   - TOX_ENV=py27
   - TOX_ENV=py34
-  - TOX_ENV=py35
-  - TOX_ENV=py36
-  - TOX_ENV=pypy
+  # - TOX_ENV=py35
+  # - TOX_ENV=py36
+  # - TOX_ENV=pypy
 notifications:
   email:
     - jason.louard.ward@gmail.com
