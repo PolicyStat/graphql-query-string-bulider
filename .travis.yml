@@ -1,5 +1,5 @@
 language: python
-install: pip install tox-travis
+install: pip install tox
 script: tox -v -e $TOX_ENV -- --verbose
 sudo: false
 env:
