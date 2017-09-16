@@ -1,6 +1,7 @@
 from unittest import TestCase
 
 from graphql_query_string_builder import Query
+from graphql_query_string_builder.exceptions import ImproperlyConfiguredException
 
 
 class QueryStringBuilderTestCase(TestCase):
@@ -24,3 +25,8 @@ class QueryStringBuilderTestCase(TestCase):
             query.render_query_string(foo_bar_baz=['id', 'bar']),
             'query { foo_bar_baz { id bar }}',
         )
+
+    def test_only_one_kwarg_can_be_passed_to_render_query_string(self):
+        query = Query()
+        with self.assertRaises(ImproperlyConfiguredException):
+            query.render_query_string(foo=1, bar=2)

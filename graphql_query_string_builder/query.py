@@ -1,3 +1,6 @@
+from graphql_query_string_builder.exceptions import ImproperlyConfiguredException
+
+
 class Query(object):
     def __init__(self, auto_camel_case=True, **kwargs):
         self.auto_camel_case = auto_camel_case
@@ -13,6 +16,10 @@ class Query(object):
 
     def render_query_string(self, **kwargs):
         query_parameters = dict(kwargs)
+        if len(query_parameters) != 1:
+            raise ImproperlyConfiguredException(
+                'You can only pass in a single kwarg to `render_query_string` at this time',
+            )
         assert len(query_parameters) == 1  # TODO Switch this to a better exception
         key = list(kwargs.keys())[0]
         value = list(kwargs.values())[0]
